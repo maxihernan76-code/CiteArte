@@ -1,0 +1,634 @@
+/* ==========================================================================
+   Design System & Variables
+   ========================================================================== */
+   :root {
+    /* Color Palette */
+    --color-beige-light: #FAF6F0;
+    --color-beige: #F4EAE0;
+    --color-pink-light: #F9E5E6;
+    --color-pink: #E9C2C5;
+    --color-pink-dark: #C89B9F;
+    --color-white: #FFFFFF;
+    --color-text-dark: #332D2D;
+    --color-text-light: #665D5D;
+    --color-accent: #B07D82;
+
+    /* Typography */
+    --font-heading: 'Playfair Display', serif;
+    --font-body: 'Inter', sans-serif;
+
+    /* Spacing & Layout */
+    --spacing-sm: 0.5rem;
+    --spacing-md: 1rem;
+    --spacing-lg: 2rem;
+    --spacing-xl: 4rem;
+    --border-radius: 12px;
+    --shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+    --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+/* ==========================================================================
+   Reset & Base Styles
+   ========================================================================== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: var(--font-body);
+    background-color: var(--color-beige-light);
+    color: var(--color-text-dark);
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+h1, h2, h3, h4 {
+    font-family: var(--font-heading);
+    color: var(--color-text-dark);
+    font-weight: 600;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+    transition: var(--transition);
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 var(--spacing-lg);
+}
+
+/* ==========================================================================
+   Components (Buttons, Forms, Badges)
+   ========================================================================== */
+.btn {
+    display: inline-block;
+    padding: 0.8rem 2rem;
+    border-radius: 30px;
+    font-weight: 500;
+    cursor: pointer;
+    text-align: center;
+    transition: var(--transition);
+    border: none;
+    font-family: var(--font-body);
+    font-size: 1rem;
+}
+
+.btn-primary {
+    background-color: var(--color-accent);
+    color: var(--color-white);
+    box-shadow: 0 4px 15px rgba(176, 125, 130, 0.3);
+}
+
+.btn-primary:hover {
+    background-color: #9A686D;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(176, 125, 130, 0.4);
+}
+
+.btn-secondary {
+    background-color: var(--color-white);
+    color: var(--color-accent);
+    border: 1px solid var(--color-pink);
+}
+
+.btn-secondary:hover {
+    background-color: var(--color-pink-light);
+    transform: translateY(-2px);
+}
+
+.btn-block {
+    display: block;
+    width: 100%;
+}
+
+.subtitle {
+    color: var(--color-text-light);
+    font-size: 1.1rem;
+    margin-bottom: var(--spacing-lg);
+    max-width: 600px;
+}
+
+.text-center {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* ==========================================================================
+   Navigation
+   ========================================================================== */
+.navbar {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 5%;
+    background: rgba(255, 255, 255, 0.9);
+    backdrop-filter: blur(10px);
+    z-index: 1000;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.03);
+    transition: var(--transition);
+}
+
+.navbar .logo {
+    display: flex;
+    align-items: center;
+}
+
+.logo-img {
+    height: 60px;
+    width: auto;
+    object-fit: contain;
+    transition: var(--transition);
+}
+
+.logo-img:hover {
+    transform: scale(1.05);
+}
+
+.navbar nav a {
+    margin-left: 2rem;
+    font-weight: 500;
+    color: var(--color-text-dark);
+    position: relative;
+}
+
+.navbar nav a::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: -4px;
+    left: 0;
+    background-color: var(--color-accent);
+    transition: var(--transition);
+}
+
+.navbar nav a:hover::after {
+    width: 100%;
+}
+
+/* ==========================================================================
+   Hero Section
+   ========================================================================== */
+.hero {
+    height: 100vh;
+    min-height: 600px;
+    display: flex;
+    align-items: center;
+    position: relative;
+    background-image: url('assets/ballet_hero.png');
+    background-size: cover;
+    background-position: center 20%;
+    background-attachment: fixed;
+}
+
+.hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to right, rgba(250, 246, 240, 0.9) 0%, rgba(250, 246, 240, 0.4) 100%);
+    z-index: 1;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+    padding: 0 10%;
+    max-width: 800px;
+    animation: fadeIn 1.5s ease-out;
+}
+
+.hero h1 {
+    font-size: 4.5rem;
+    line-height: 1.1;
+    margin-bottom: 1.5rem;
+    color: var(--color-text-dark);
+}
+
+.hero p {
+    font-size: 1.3rem;
+    color: var(--color-text-light);
+    margin-bottom: 2.5rem;
+    max-width: 500px;
+}
+
+.hero-buttons {
+    display: flex;
+    gap: 1rem;
+}
+
+/* ==========================================================================
+   Registration Section
+   ========================================================================== */
+.registration-section {
+    padding: var(--spacing-xl) 0;
+    background-color: var(--color-white);
+}
+
+.dual-layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+}
+
+.registration-info h2 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+}
+
+.image-wrapper {
+    border-radius: var(--border-radius);
+    overflow: hidden;
+    box-shadow: var(--shadow);
+    margin-top: 2rem;
+    position: relative;
+}
+
+.image-wrapper::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(176, 125, 130, 0.1);
+    z-index: 1;
+}
+
+.section-image {
+    width: 100%;
+    height: auto;
+    display: block;
+    transition: transform 0.5s ease;
+}
+
+.image-wrapper:hover .section-image {
+    transform: scale(1.05);
+}
+
+.elegant-form {
+    background: var(--color-beige);
+    padding: 3rem;
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow);
+}
+
+.elegant-form h3 {
+    margin-bottom: 2rem;
+    font-size: 1.8rem;
+    text-align: center;
+}
+
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+    font-size: 0.9rem;
+    color: var(--color-text-dark);
+}
+
+.form-group input, 
+.form-group select {
+    width: 100%;
+    padding: 1rem;
+    border: 1px solid var(--color-pink);
+    border-radius: 8px;
+    background-color: var(--color-white);
+    font-family: var(--font-body);
+    font-size: 1rem;
+    transition: var(--transition);
+}
+
+.form-group input:focus, 
+.form-group select:focus {
+    outline: none;
+    border-color: var(--color-accent);
+    box-shadow: 0 0 0 3px rgba(176, 125, 130, 0.2);
+}
+
+.success-message {
+    margin-top: 1rem;
+    padding: 1rem;
+    background-color: #d4edda;
+    color: #155724;
+    border-radius: 8px;
+    text-align: center;
+}
+
+.hidden {
+    display: none !important;
+}
+
+/* ==========================================================================
+   Shows & Tickets Section
+   ========================================================================== */
+.shows-section {
+    padding: var(--spacing-xl) 0;
+    background-color: var(--color-beige-light);
+}
+
+.shows-section h2 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+}
+
+.shows-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 2rem;
+    margin-top: 3rem;
+}
+
+.show-card {
+    background: var(--color-white);
+    border-radius: var(--border-radius);
+    padding: 2rem;
+    box-shadow: var(--shadow);
+    display: flex;
+    gap: 1.5rem;
+    transition: var(--transition);
+    border-top: 4px solid transparent;
+}
+
+.show-card:hover {
+    transform: translateY(-5px);
+    border-top-color: var(--color-accent);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.08);
+}
+
+.show-date {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: var(--color-pink-light);
+    color: var(--color-accent);
+    border-radius: 12px;
+    padding: 1rem;
+    min-width: 80px;
+    height: 80px;
+}
+
+.show-date .day {
+    font-size: 2rem;
+    font-weight: 700;
+    line-height: 1;
+}
+
+.show-date .month {
+    font-size: 0.9rem;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+.show-details {
+    flex: 1;
+}
+
+.show-details h3 {
+    font-size: 1.4rem;
+    margin-bottom: 0.5rem;
+}
+
+.show-location {
+    color: var(--color-text-light);
+    font-size: 0.9rem;
+    margin-bottom: 1.5rem;
+}
+
+.ticket-booking {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid var(--color-beige);
+}
+
+.ticket-booking input {
+    width: 60px;
+    padding: 0.5rem;
+    border: 1px solid var(--color-pink);
+    border-radius: 6px;
+    text-align: center;
+}
+
+.ticket-booking .price {
+    font-weight: 600;
+    color: var(--color-accent);
+    margin-left: auto;
+}
+
+.payment-methods {
+    margin-bottom: 1.5rem;
+}
+
+.payment-label {
+    display: block;
+    font-size: 0.8rem;
+    color: var(--color-text-light);
+    margin-bottom: 0.5rem;
+}
+
+.payment-badges {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.payment-badge {
+    font-size: 0.75rem;
+    padding: 0.3rem 0.8rem;
+    border-radius: 20px;
+    font-weight: 600;
+}
+
+.payment-badge.mp {
+    background-color: #E6F3FF;
+    color: #009EE3;
+    border: 1px solid #BFE0FF;
+}
+
+.payment-badge.pp {
+    background-color: #E2EAF4;
+    color: #003087;
+    border: 1px solid #C8D7EB;
+}
+
+/* Modal */
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(5px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 2000;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+}
+
+.modal:not(.hidden) {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.modal-content {
+    background: var(--color-white);
+    padding: 2.5rem;
+    border-radius: var(--border-radius);
+    width: 90%;
+    max-width: 450px;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+    position: relative;
+    transform: translateY(20px);
+    transition: transform 0.3s ease;
+}
+
+.modal:not(.hidden) .modal-content {
+    transform: translateY(0);
+}
+
+.close-modal {
+    position: absolute;
+    top: 1rem;
+    right: 1.5rem;
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: var(--color-text-light);
+}
+
+.total-price {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--color-accent);
+    margin: 1rem 0 2rem;
+}
+
+.mock-payment-options {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.mock-btn {
+    padding: 1rem;
+    border-radius: 8px;
+    border: none;
+    font-weight: 600;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.mp-btn {
+    background-color: #009EE3;
+    color: white;
+}
+.mp-btn:hover { background-color: #0088C3; }
+
+.pp-btn {
+    background-color: #FFC439;
+    color: #003087;
+}
+.pp-btn:hover { background-color: #F2B933; }
+
+/* ==========================================================================
+   Footer
+   ========================================================================== */
+footer {
+    background-color: var(--color-white);
+    padding: 3rem 0;
+    border-top: 1px solid var(--color-beige);
+}
+
+.footer-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.footer-logo {
+    display: flex;
+    align-items: center;
+}
+
+.logo-img-footer {
+    height: 80px;
+    width: auto;
+    object-fit: contain;
+    mix-blend-mode: multiply; /* Helps the logo blend with the background if it has slightly different white/beige tones */
+}
+
+.social-links a {
+    margin-left: 1.5rem;
+    color: var(--color-text-light);
+}
+
+.social-links a:hover {
+    color: var(--color-accent);
+}
+
+/* ==========================================================================
+   Animations
+   ========================================================================== */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* ==========================================================================
+   Responsive Design
+   ========================================================================== */
+@media (max-width: 900px) {
+    .dual-layout {
+        grid-template-columns: 1fr;
+    }
+    .hero h1 {
+        font-size: 3.5rem;
+    }
+    .hero-content {
+        padding: 0 5%;
+    }
+}
+
+@media (max-width: 600px) {
+    .hero h1 {
+        font-size: 2.5rem;
+    }
+    .hero-buttons {
+        flex-direction: column;
+    }
+    .footer-content {
+        flex-direction: column;
+        text-align: center;
+    }
+    .navbar nav {
+        display: none; /* Simple mobile hide for prototype */
+    }
+}
